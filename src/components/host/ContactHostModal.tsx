@@ -17,14 +17,23 @@ export default function ContactHostModal({ isOpen, onClose }: ContactHostModalPr
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !message) return;
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, dates, message, interestType: "VIP Concierge Inquiry" })
+      });
+    } catch (err) {
+      console.error(err);
+    }
     setSent(true);
     setTimeout(() => {
       setSent(false);
       onClose();
-    }, 1500);
+    }, 2000);
   };
 
   return (

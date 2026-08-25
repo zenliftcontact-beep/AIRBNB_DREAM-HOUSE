@@ -2,14 +2,23 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@200;300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
 
 :root {
   --background: #090a0c;
   --foreground: #fdfbf7;
+  --ivory: #fdfbf7;
+  --gold-primary: #d4af37;
+  --gold-light: #f7f0d4;
+  --gold-dark: #b89228;
+  --charcoal-deep: #090a0c;
+  --charcoal-surface: #121418;
+  --charcoal-card: #181b20;
+  
   --font-cormorant: 'Cormorant Garamond', Georgia, serif;
-  --font-playfair: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-playfair: 'Playfair Display', Georgia, serif;
   --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-manrope: 'Manrope', system-ui, -apple-system, sans-serif;
 }
 
 html {
@@ -20,7 +29,7 @@ html {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter);
+  font-family: var(--font-manrope), var(--font-inter), system-ui, sans-serif;
   overflow-x: hidden;
   selection-background-color: #d4af37;
   selection-color: #090a0c;
@@ -33,30 +42,37 @@ body {
 
 /* Custom Luxury Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0c0e;
+  background: #090a0c;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(212, 175, 55, 0.25);
+  background: rgba(212, 175, 55, 0.3);
   border-radius: 9999px;
-  border: 2px solid #0b0c0e;
+  border: 1px solid #090a0c;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 175, 55, 0.55);
+  background: rgba(212, 175, 55, 0.6);
 }
 
-/* Glassmorphism Classes */
+/* Glassmorphism & Luxury Cards */
 .glass-card {
-  background: rgba(18, 20, 24, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.18);
+  background: rgba(18, 20, 24, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.glass-card-subtle {
+  background: rgba(24, 27, 32, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .gold-gradient-text {
@@ -65,8 +81,46 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+.gold-border-glow {
+  box-shadow: 0 0 25px -3px rgba(212, 175, 55, 0.25);
+}
+
 .bg-radial-vignette {
-  background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(9, 10, 12, 0.95) 100%);
+  background: radial-gradient(circle at 50% 50%, transparent 35%, rgba(9, 10, 12, 0.96) 100%);
+}
+
+/* Button & Interactive Classes */
+.btn-gold-primary {
+  background: linear-gradient(135deg, #f7f0d4 0%, #d4af37 50%, #b89228 100%);
+  color: #090a0c;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-gold-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.38);
+  opacity: 0.96;
+}
+
+.btn-luxury-outline {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fdfbf7;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-luxury-outline:hover {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: rgba(212, 175, 55, 0.5);
+  color: #f7f0d4;
+  transform: translateY(-1px);
 }
 
 @keyframes spinSlow {

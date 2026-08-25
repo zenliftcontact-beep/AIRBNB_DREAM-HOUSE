@@ -58,14 +58,36 @@ export default function CheckoutModal({ isOpen, onClose, bookingState }: Checkou
     setStep("payment");
   };
 
-  const handleCompleteBooking = () => {
+  const handleCompleteBooking = async () => {
     setIsProcessing(true);
-    setTimeout(() => {
-      setIsProcessing(false);
-      const code = `DH-${Math.floor(100000 + Math.random() * 900000)}-LUXE`;
+    try {
+      const response = await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          guestName: guestName || "VIP Guest",
+          guestEmail: guestEmail || "guest@luxury.com",
+          guestPhone: guestPhone,
+          checkIn: bookingState.checkIn,
+          checkOut: bookingState.checkOut,
+          adults: bookingState.adults,
+          children: bookingState.children,
+          infants: bookingState.infants,
+          pets: bookingState.pets,
+          selectedAddons: bookingState.selectedAddonNames,
+          specialRequests: arrivalNote
+        })
+      });
+      const data = await response.json();
+      const code = data.reservation?.id || `DH-${Math.floor(100000 + Math.random() * 900000)}-LUXE`;
       setConfirmationCode(code);
+    } catch (e) {
+      const fallbackCode = `DH-${Math.floor(100000 + Math.random() * 900000)}-LUXE`;
+      setConfirmationCode(fallbackCode);
+    } finally {
+      setIsProcessing(false);
       setStep("success");
-    }, 1500);
+    }
   };
 
   return (

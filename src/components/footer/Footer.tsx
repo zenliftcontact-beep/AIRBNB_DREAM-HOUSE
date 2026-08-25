@@ -166,7 +166,16 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-sand-500">
-          <p>© {new Date().getFullYear()} Dream House. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <p>© {new Date().getFullYear()} Dream House Sanctuary. All rights reserved.</p>
+            <span>•</span>
+            <Link
+              href="/admin"
+              className="text-gold-400/80 hover:text-gold-300 transition-colors uppercase tracking-wider text-[10px] font-semibold"
+            >
+              Owner Portal ↗
+            </Link>
+          </div>
           <p className="flex items-center gap-1">
             <span>Crafted with</span>
             <Heart className="w-3 h-3 text-gold-400 fill-gold-400" />

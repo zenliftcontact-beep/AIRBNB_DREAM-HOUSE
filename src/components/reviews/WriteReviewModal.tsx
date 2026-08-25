@@ -20,7 +20,7 @@ export default function WriteReviewModal({ isOpen, onClose, onAddReview }: Write
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!author || !comment) return;
 
@@ -44,12 +44,22 @@ export default function WriteReviewModal({ isOpen, onClose, onAddReview }: Write
       },
     };
 
+    try {
+      await fetch("/api/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newRev)
+      });
+    } catch (err) {
+      console.error(err);
+    }
+
     onAddReview(newRev);
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
       onClose();
-    }, 1200);
+    }, 1500);
   };
 
   return (

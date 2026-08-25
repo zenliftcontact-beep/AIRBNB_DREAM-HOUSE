@@ -53,9 +53,10 @@ const config: Config = {
         }
       },
       fontFamily: {
-        serif: ["var(--font-cormorant)", "Playfair Display", "Georgia", "serif"],
-        display: ["var(--font-playfair)", "Cormorant Garamond", "serif"],
-        sans: ["var(--font-inter)", "Montserrat", "sans-serif"],
+        serif: ["var(--font-cormorant)", "Cormorant Garamond", "Playfair Display", "Georgia", "serif"],
+        display: ["var(--font-playfair)", "Playfair Display", "Cormorant Garamond", "Georgia", "serif"],
+        sans: ["var(--font-manrope)", "var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        body: ["var(--font-manrope)", "var(--font-inter)", "Inter", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "gold-gradient": "linear-gradient(135deg, #F7F0D4 0%, #D4AF37 50%, #B89228 100%)",
